@@ -34,6 +34,16 @@ final class RemoteFeedLoaderTests: XCTestCase {
         XCTAssertEqual(client.requestedURL, url)
     }
     
+    func test_loadTwice_requestsDataFromURL() {
+        let url = URL(string: "http://a-url.com")!
+        let (sut, client) = makeSUT(url: url)
+        
+        sut.load()
+        sut.load()
+        
+        XCTAssertEqual(client.requestedURLs, [url, url])
+    }
+    
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
@@ -56,10 +66,15 @@ final class RemoteFeedLoaderTests: XCTestCase {
     }
     
     private class HTTPClientSpy: HTTPClient {
+        var requestedURL: URL?
+        var requestedURLs = [URL]()
+        
         func get(from url: URL) {
             requestedURL = url
+            
+            requestedURLs.append(url)
         }
         
-        var requestedURL: URL?
+        
     }
 }

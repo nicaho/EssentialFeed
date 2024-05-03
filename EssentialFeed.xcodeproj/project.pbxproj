@@ -12,6 +12,7 @@
 		688CCC732BE480EC004A8EEE /* EssentialFeedTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC722BE480EC004A8EEE /* EssentialFeedTests.swift */; };
 		688CCC742BE480EC004A8EEE /* EssentialFeed.h in Headers */ = {isa = PBXBuildFile; fileRef = 688CCC662BE480EC004A8EEE /* EssentialFeed.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		688CCC7E2BE48139004A8EEE /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC7D2BE48139004A8EEE /* FeedItem.swift */; };
+		688CCC802BE4822C004A8EEE /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC7F2BE4822C004A8EEE /* FeedLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		688CCC6D2BE480EC004A8EEE /* EssentialFeedTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EssentialFeedTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		688CCC722BE480EC004A8EEE /* EssentialFeedTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EssentialFeedTests.swift; sourceTree = "<group>"; };
 		688CCC7D2BE48139004A8EEE /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
+		688CCC7F2BE4822C004A8EEE /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				688CCC662BE480EC004A8EEE /* EssentialFeed.h */,
 				688CCC672BE480EC004A8EEE /* EssentialFeed.docc */,
 				688CCC7D2BE48139004A8EEE /* FeedItem.swift */,
+				688CCC7F2BE4822C004A8EEE /* FeedLoader.swift */,
 			);
 			path = EssentialFeed;
 			sourceTree = "<group>";
@@ -197,6 +200,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				688CCC802BE4822C004A8EEE /* FeedLoader.swift in Sources */,
 				688CCC7E2BE48139004A8EEE /* FeedItem.swift in Sources */,
 				688CCC682BE480EC004A8EEE /* EssentialFeed.docc in Sources */,
 			);

@@ -15,6 +15,7 @@
 		688CCC802BE4822C004A8EEE /* FeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC7F2BE4822C004A8EEE /* FeedLoader.swift */; };
 		688CCC832BE486A0004A8EEE /* RemoteFeedLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC822BE486A0004A8EEE /* RemoteFeedLoaderTests.swift */; };
 		688CCC862BE496E2004A8EEE /* RemoteFeedLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC852BE496E2004A8EEE /* RemoteFeedLoader.swift */; };
+		688CCC882BE731C8004A8EEE /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC872BE731C8004A8EEE /* HTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		688CCC7F2BE4822C004A8EEE /* FeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedLoader.swift; sourceTree = "<group>"; };
 		688CCC822BE486A0004A8EEE /* RemoteFeedLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoaderTests.swift; sourceTree = "<group>"; };
 		688CCC852BE496E2004A8EEE /* RemoteFeedLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteFeedLoader.swift; sourceTree = "<group>"; };
+		688CCC872BE731C8004A8EEE /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				688CCC852BE496E2004A8EEE /* RemoteFeedLoader.swift */,
+				688CCC872BE731C8004A8EEE /* HTTPClient.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				688CCC862BE496E2004A8EEE /* RemoteFeedLoader.swift in Sources */,
+				688CCC882BE731C8004A8EEE /* HTTPClient.swift in Sources */,
 				688CCC802BE4822C004A8EEE /* FeedLoader.swift in Sources */,
 				688CCC7E2BE48139004A8EEE /* FeedItem.swift in Sources */,
 				688CCC682BE480EC004A8EEE /* EssentialFeed.docc in Sources */,

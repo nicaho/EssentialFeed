@@ -40,7 +40,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func test_getFromURL_performsGETRequestWithURL() {
-        let url = URL(string: "http://any-url.com")!
+        let url = URL(string: "http://any-url.com/")!
         let exp = expectation(description: "Wait for request")
         exp.assertForOverFulfill = false // ?? 看起来解决 [API violation - multiple calls]，看后续课程如何修复
         
@@ -57,7 +57,7 @@ final class URLSessionHTTPClientTests: XCTestCase {
     }
     
     func test_getFromURL_failsOnRequestError() {
-        let url = URL(string: "http://any-url.com")!
+        let url = URL(string: "http://any-url.com/")!
         let error = NSError(domain: "any error", code: 1)
         URLProtocolStub.stub(data: nil, response: nil, error: error)
         
@@ -79,8 +79,16 @@ final class URLSessionHTTPClientTests: XCTestCase {
     
     // MARK: - Helpers
     
-    private func makeSUT() -> URLSessionHTTPClient {
-        URLSessionHTTPClient()
+    private func makeSUT(file: StaticString = #filePath, line: UInt = #line) -> URLSessionHTTPClient {
+        let sut = URLSessionHTTPClient()
+        trackForMemoryLeaks(sut, file: file, line: line)
+        return sut
+    }
+    
+    private func trackForMemoryLeaks(_ instance: AnyObject, file: StaticString = #filePath, line: UInt = #line) {
+        addTeardownBlock { [weak instance] in
+            XCTAssertNil(instance, "Instance should have been deallocated. Potential memory leak.", file: file, line: line)
+        }
     }
     
     private class URLProtocolStub: URLProtocol {

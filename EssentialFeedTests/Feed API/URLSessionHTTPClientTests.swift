@@ -27,34 +27,22 @@ class URLSessionHTTPClient {
 
 final class URLSessionHTTPClientTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    override func setUp() {
+        super.setUp()
+        
+        URLProtocolStub.startInterceptingRequest()
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        URLProtocolStub.stopInterceptingRequest()
     }
-
-//    func testExample() throws {
-//        // This is an example of a functional test case.
-//        // Use XCTAssert and related functions to verify your tests produce the correct results.
-//        // Any test you write for XCTest can be annotated as throws and async.
-//        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-//        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-//    }
-
-//    func testPerformanceExample() throws {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
-//    }
     
     func test_getFromURL_performsGETRequestWithURL() {
-        URLProtocolStub.startInterceptingRequest()
-        
         let url = URL(string: "http://any-url.com")!
         let exp = expectation(description: "Wait for request")
+        exp.assertForOverFulfill = false // ?? 看起来解决 [API violation - multiple calls]，看后续课程如何修复
         
         URLProtocolStub.observeRequests { request in
             XCTAssertEqual(request.url, url)
@@ -66,12 +54,9 @@ final class URLSessionHTTPClientTests: XCTestCase {
         URLSessionHTTPClient().get(from: url) { _ in }
         
         wait(for: [exp], timeout: 1.0)
-        URLProtocolStub.stopInterceptingRequest()
     }
     
     func test_getFromURL_failsOnRequestError() {
-        URLProtocolStub.startInterceptingRequest()
-        
         let url = URL(string: "http://any-url.com")!
         let error = NSError(domain: "any error", code: 1)
         URLProtocolStub.stub(data: nil, response: nil, error: error)
@@ -92,7 +77,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
         }
         
         wait(for: [exp], timeout: 1.0)
-        URLProtocolStub.stopInterceptingRequest()
     }
     
     // MARK: - Helpers

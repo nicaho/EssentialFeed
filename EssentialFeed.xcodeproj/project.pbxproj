@@ -19,6 +19,7 @@
 		688CCC882BE731C8004A8EEE /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC872BE731C8004A8EEE /* HTTPClient.swift */; };
 		688CCC8A2BE7321B004A8EEE /* FeedItemsMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688CCC892BE7321B004A8EEE /* FeedItemsMapper.swift */; };
 		68B139F92BF20B8C00EC4795 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B139F82BF20B8C00EC4795 /* XCTestCase+MemoryLeakTracking.swift */; };
+		68B139FB2BF30EA800EC4795 /* URLSessionHTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B139FA2BF30EA800EC4795 /* URLSessionHTTPClient.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		688CCC872BE731C8004A8EEE /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
 		688CCC892BE7321B004A8EEE /* FeedItemsMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemsMapper.swift; sourceTree = "<group>"; };
 		68B139F82BF20B8C00EC4795 /* XCTestCase+MemoryLeakTracking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XCTestCase+MemoryLeakTracking.swift"; sourceTree = "<group>"; };
+		68B139FA2BF30EA800EC4795 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 				688CCC852BE496E2004A8EEE /* RemoteFeedLoader.swift */,
 				688CCC872BE731C8004A8EEE /* HTTPClient.swift */,
 				688CCC892BE7321B004A8EEE /* FeedItemsMapper.swift */,
+				68B139FA2BF30EA800EC4795 /* URLSessionHTTPClient.swift */,
 			);
 			path = "Feed API";
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68B139FB2BF30EA800EC4795 /* URLSessionHTTPClient.swift in Sources */,
 				688CCC862BE496E2004A8EEE /* RemoteFeedLoader.swift in Sources */,
 				688CCC882BE731C8004A8EEE /* HTTPClient.swift in Sources */,
 				688CCC802BE4822C004A8EEE /* FeedLoader.swift in Sources */,

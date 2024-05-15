@@ -22,8 +22,10 @@ jobs:
       run: sudo xcode-select --reset
     
     - name: Select Xcode
-      run: sudo xcode-select -switch /Library/Developer/CommandLineTools
-#      run: sudo xcode-select -switch /Applications/Xcode-15.0.1.app
+    # 通过Xcodes安装其他版本的Xcode看看
+      run: sudo xcode-select -switch /Applications/Xcode-15.0.1.app
+#      run: sudo xcode-select -switch /Library/Developer/CommandLineTools
+      
       
       
 #    - name: Xcode version

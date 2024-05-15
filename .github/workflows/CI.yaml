@@ -18,18 +18,8 @@ jobs:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v4
     
-    - name: Reset Xcode
-      run: sudo xcode-select --reset
-    
     - name: Select Xcode
-    # 通过Xcodes安装其他版本的Xcode看看
       run: sudo xcode-select -switch /Applications/Xcode-15.0.1.app
-#      run: sudo xcode-select -switch /Library/Developer/CommandLineTools
-      
-      
-      
-#    - name: Xcode version
-#      run: /usr/bin/xcodebuild -version
       
     - name: Build and Test
       run: xcodebuild clean build test -project EssentialFeed.xcodeproj -scheme "CI" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO -sdk macosx -destination "platform=macOS" ONLY_ACTIVE_ARCH=YES

@@ -9,6 +9,21 @@ import XCTest
 import EssentialFeed
 
 final class EssentialFeedAPIEndToEndTests: XCTestCase {
+//    func demo() {
+//        let cache = URLCache(memoryCapacity: 10 * 1024 * 1024, diskCapacity: 100 * 1024 * 1024, directory: nil)
+//        
+//        let configuration = URLSessionConfiguration.default
+//        configuration.urlCache = cache
+//        configuration.requestCachePolicy = .reloadIgnoringLocalCacheData
+//        let session = URLSession(configuration: configuration)
+//        
+//        let url = URL(string: "http://any-url.com")!
+//        let request = URLRequest(url: url, cachePolicy: .returnCacheDataDontLoad, timeoutInterval: 30)
+//
+//        // 在App启动时就要设置（如果设置为全局）
+//        URLCache.shared = cache
+//    }
+    
     func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
         switch getFeedResult() {
         case .success(let items):
@@ -31,8 +46,12 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
     // MARK: - Helpers
 
     private func getFeedResult(file: StaticString = #filePath, line: UInt = #line) -> LoadFeedResult? {
+        // 被重定向，所以没网络有缓存，也返回error
         let testServerURL = URL(string: "https://essentialdeveloper.com/feed-case-study/test-api/feed")!
-        let client = URLSessionHTTPClient()
+//        let testServerURL = URL(string:"https://static1.squarespace.com/static/5891c5b8d1758ec68ef5dbc2/t/5c52cdd0b8a045df091d2fff/1548930512083/feed-case-study-test-api-feed.json")!
+        
+        let client = URLSessionHTTPClient(session: URLSession(configuration: URLSessionConfiguration.ephemeral))
+//        let client = URLSessionHTTPClient()
         let loader = RemoteFeedLoader(url: testServerURL, client: client)
         
         trackForMemoryLeaks(client, file: file, line: line)

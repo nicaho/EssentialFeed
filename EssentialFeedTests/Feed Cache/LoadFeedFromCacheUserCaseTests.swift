@@ -36,7 +36,7 @@ class LoadFeedFromCacheUserCaseTests: XCTestCase {
         let (sut, store) = makeSUT()
         
         expect(sut, toCompleteWith: .success([])) {
-            store.completeRetrivalWithCache()
+            store.completeRetrivalWithEmptyCache()
         }
     }
     
@@ -71,6 +71,75 @@ class LoadFeedFromCacheUserCaseTests: XCTestCase {
         expect(sut, toCompleteWith: .success([])) {
             store.completeRetrival(with: feed.local, timestamp: moreThanSevenDaysOldTimestamp)
         }
+    }
+    
+    func test_load_deletesCacheOnRetrivalError() {
+        let (sut, store) = makeSUT()
+        
+        sut.load{ _ in }
+        store.completeRetrival(with: anyError())
+        
+        XCTAssertEqual(store.receiveMessages, [.retrieve, .deleteCachedFeed])
+    }
+    
+    func test_load_doesNotDeletesCacheOnEmptyCache() {
+        let (sut, store) = makeSUT()
+        
+        sut.load{ _ in }
+        store.completeRetrivalWithEmptyCache()
+        
+        XCTAssertEqual(store.receiveMessages, [.retrieve])
+    }
+    
+    func test_load_doesNotDeletesCacheOnLessThanSevenDaysOnCache() {
+        let feed = uniqueImageFeed()
+        let fixedCurrentDate = Date()
+        let lessThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: 1)
+        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+        
+        sut.load{ _ in }
+        store.completeRetrival(with: feed.local, timestamp: lessThanSevenDaysOldTimestamp)
+        
+        XCTAssertEqual(store.receiveMessages, [.retrieve])
+    }
+    
+    func test_load_deletesCacheOnSevenDaysOldCache() {
+        let feed = uniqueImageFeed()
+        let fixedCurrentDate = Date()
+        let sevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7)
+        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+        
+        sut.load{ _ in }
+        store.completeRetrival(with: feed.local, timestamp: sevenDaysOldTimestamp)
+        
+        XCTAssertEqual(store.receiveMessages, [.retrieve, .deleteCachedFeed])
+    }
+    
+    func test_load_deletesCacheOnMoreThanSevenDaysOldCache() {
+        let feed = uniqueImageFeed()
+        let fixedCurrentDate = Date()
+        let moreThanSevenDaysOldTimestamp = fixedCurrentDate.adding(days: -7).adding(seconds: -1)
+        let (sut, store) = makeSUT(currentDate: { fixedCurrentDate })
+        
+        sut.load{ _ in }
+        store.completeRetrival(with: feed.local, timestamp: moreThanSevenDaysOldTimestamp)
+        
+        XCTAssertEqual(store.receiveMessages, [.retrieve, .deleteCachedFeed])
+    }
+    
+    func test_load_doesNotDeliverResultAfterSUTInstanceHasBeenDeallocated() {
+        let store = FeedStoreSpy()
+        var sut: LocalFeedLoader? = LocalFeedLoader(store: store, currentDate: Date.init)
+        
+        var receiveResults = [LocalFeedLoader.LoadResult]()
+        sut?.load{
+            receiveResults.append($0)
+        }
+        
+        sut = nil
+        store.completeRetrivalWithEmptyCache()
+        
+        XCTAssertTrue(receiveResults.isEmpty)
     }
     
     // MARK: - Helpers

@@ -15,7 +15,7 @@ extension FailableInsertFeedStoreSpecs where Self: XCTestCase {
         
         let insertionError = insert((feed, timestamp), to: sut)
         
-        XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error")
+        XCTAssertNotNil(insertionError, "Expected cache insertion to fail with an error", file: file, line: line)
     }
     
     func assertThatInsertHasNoSideEffectsOnInsertionError(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
@@ -24,7 +24,7 @@ extension FailableInsertFeedStoreSpecs where Self: XCTestCase {
         
         insert((feed, timestamp), to: sut)
         
-        expect(sut, toRetirve: .empty)
+        expect(sut, toRetirve: .empty, file: file, line: line)
     }
     
 }

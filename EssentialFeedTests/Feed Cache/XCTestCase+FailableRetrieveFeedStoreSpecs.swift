@@ -10,10 +10,10 @@ import EssentialFeed
 
 extension FailableRetrieveFeedStoreSpecs where Self: XCTestCase {
     func assertThatRetrieveDeliversFailureOnRetrieveError(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
-        expect(sut, toRetirve: .failure(anyError()))
+        expect(sut, toRetirve: .failure(anyError()), file: file, line: line)
     }
     
     func assertThatRetrieveHasNoSideEffectsOnFailure(on sut: FeedStore, file: StaticString = #filePath, line: UInt = #line) {
-        expect(sut, toRetirveTwice: .failure(anyError()))
+        expect(sut, toRetirveTwice: .failure(anyError()), file: file, line: line)
     }
 }

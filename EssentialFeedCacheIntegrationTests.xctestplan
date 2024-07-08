@@ -4,7 +4,7 @@
       "id" : "C6916E41-184D-4CC4-ABD5-31307279DC21",
       "name" : "Test Scheme Action",
       "options" : {
-
+        
       }
     }
   ],
@@ -17,7 +17,8 @@
           "name" : "EssentialFeed"
         }
       ]
-    }
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
     {

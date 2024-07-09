@@ -25,24 +25,24 @@ final class EssentialFeedAPIEndToEndTests: XCTestCase {
 //    }
     
     // 先注释，为了不影响其他tests
-//    func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
-//        switch getFeedResult() {
-//        case .success(let imageFeed):
-//            XCTAssertEqual(imageFeed.count, 8, "Expeccted 8 items in the test account account")
-//            XCTAssertEqual(imageFeed[0], expectedItem(at: 0))
-//            XCTAssertEqual(imageFeed[1], expectedItem(at: 1))
-//            XCTAssertEqual(imageFeed[2], expectedItem(at: 2))
-//            XCTAssertEqual(imageFeed[3], expectedItem(at: 3))
-//            XCTAssertEqual(imageFeed[4], expectedItem(at: 4))
-//            XCTAssertEqual(imageFeed[5], expectedItem(at: 5))
-//            XCTAssertEqual(imageFeed[6], expectedItem(at: 6))
-//            XCTAssertEqual(imageFeed[7], expectedItem(at: 7))
-//        case .failure(let error):
-//            XCTFail("Expected successful feed result, got \(error) instead")
-//        default:
-//            XCTFail("Expected successful feed result, got no result instead")
-//        }
-//    }
+    func test_endToEndTestServerGETFeedResult_matchesFixedTestAccountData() {
+        switch getFeedResult() {
+        case .success(let imageFeed):
+            XCTAssertEqual(imageFeed.count, 8, "Expeccted 8 items in the test account account")
+            XCTAssertEqual(imageFeed[0], expectedItem(at: 0))
+            XCTAssertEqual(imageFeed[1], expectedItem(at: 1))
+            XCTAssertEqual(imageFeed[2], expectedItem(at: 2))
+            XCTAssertEqual(imageFeed[3], expectedItem(at: 3))
+            XCTAssertEqual(imageFeed[4], expectedItem(at: 4))
+            XCTAssertEqual(imageFeed[5], expectedItem(at: 5))
+            XCTAssertEqual(imageFeed[6], expectedItem(at: 6))
+            XCTAssertEqual(imageFeed[7], expectedItem(at: 7))
+        case .failure(let error):
+            XCTFail("Expected successful feed result, got \(error) instead")
+        default:
+            XCTFail("Expected successful feed result, got no result instead")
+        }
+    }
     
     // MARK: - Helpers
 

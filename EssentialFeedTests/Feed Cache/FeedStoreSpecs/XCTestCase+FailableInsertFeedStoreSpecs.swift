@@ -24,7 +24,7 @@ extension FailableInsertFeedStoreSpecs where Self: XCTestCase {
         
         insert((feed, timestamp), to: sut)
         
-        expect(sut, toRetirve: .empty, file: file, line: line)
+        expect(sut, toRetirve: .success(.none), file: file, line: line)
     }
     
 }

@@ -49,7 +49,7 @@ extension LocalFeedLoader {
             switch result {
             case let .failure(error):
                 completion(.failure(error))
-            case .success(.found(let feed, let timestamp)) where FeedCachePolicy.validate(timestamp, against: currentDate()):
+            case .success(.some((let feed, let timestamp))) where FeedCachePolicy.validate(timestamp, against: currentDate()):
                 completion(.success(feed.toModels()))
             case .success:
                 completion(.success([]))
@@ -65,7 +65,7 @@ extension LocalFeedLoader {
             switch result {
             case .failure:
                 self.store.deleteCachedFeed { _ in }
-            case let .success(.found(_, timestamp)) where !FeedCachePolicy.validate(timestamp, against: currentDate()):
+            case let .success(.some((_, timestamp))) where !FeedCachePolicy.validate(timestamp, against: currentDate()):
                 self.store.deleteCachedFeed { _ in }
             case .success:
                 break

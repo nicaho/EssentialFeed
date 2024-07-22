@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import UIKit
 import EssentialFeed
 
 final class FeedViewController: UITableViewController {
@@ -26,48 +25,50 @@ final class FeedViewController: UITableViewController {
         load()
     }
     
-    override func viewIsAppearing(_ animated: Bool) {
-        super.viewIsAppearing(animated)
-        
-        refreshControl?.beginRefreshing()
-    }
+//    override func viewIsAppearing(_ animated: Bool) {
+//        super.viewIsAppearing(animated)
+//        
+//        refreshControl?.beginRefreshing()
+//    }
     
     @objc private func load() {
+        refreshControl?.beginRefreshing()
         loader?.load{ [weak self] _ in
             self?.refreshControl?.endRefreshing()
         }
     }
 }
-
+// 改为iOS16测试！！
 final class FeedViewControllerTests: XCTestCase {
 
     func test_loadFeedActions_requestFeedFromLoader() {
         let (sut, loader) = makeSUT()
-        XCTAssertEqual(loader.loadCallCount, 0)
+        XCTAssertEqual(loader.loadCallCount, 0, "Expected no loading requests before view is loaded")
         
         sut.loadViewIfNeeded()
-        XCTAssertEqual(loader.loadCallCount, 1)
+        XCTAssertEqual(loader.loadCallCount, 1, "Expected a loading request once view is loaded")
         
         sut.simulateUserInitiatedFeedLoad()
-        XCTAssertEqual(loader.loadCallCount, 2)
+        XCTAssertEqual(loader.loadCallCount, 2, "Expected another loading request once user initiates a reload")
         
         sut.simulateUserInitiatedFeedLoad()
-        XCTAssertEqual(loader.loadCallCount, 3)
+        XCTAssertEqual(loader.loadCallCount, 3, "Expected yet another loading request once user initiates another reload")
     }
     
     func test_loadingFeedIndicator_isVisibleWhileLoadingFeed() {
         let (sut, loader) = makeSUT()
 
-        sut.simulateAppearance()
-        XCTAssertTrue(sut.isShowingLoadingIndicator)
+        sut.loadViewIfNeeded()
+        XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once view is loaded")
 
         loader.completeFeedLoading(at: 0)
-        XCTAssertFalse(sut.isShowingLoadingIndicator)
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading is completed")
 
         sut.simulateUserInitiatedFeedLoad()
-        sut.refreshControl?.beginRefreshing()
-        XCTAssertTrue(sut.isShowingLoadingIndicator)
+        XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
         
+        loader.completeFeedLoading(at: 1)
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading is completed")
     }
     
     

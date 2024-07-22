@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		684196042BEC739A008F3E2C /* URLSessionHTTPClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684196032BEC739A008F3E2C /* URLSessionHTTPClientTests.swift */; };
-		687075622C46B3A9003942B5 /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6870755A2C46B3A9003942B5 /* EssentialFeediOS.framework */; };
 		687075722C46CF92003942B5 /* FeedViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 687075712C46CF92003942B5 /* FeedViewControllerTests.swift */; };
-		687075742C480E04003942B5 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688CCC632BE480EC004A8EEE /* EssentialFeed.framework */; };
-		687075752C480E04003942B5 /* EssentialFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 688CCC632BE480EC004A8EEE /* EssentialFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6870757A2C480EE5003942B5 /* XCTestCase+MemoryLeakTracking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B139F82BF20B8C00EC4795 /* XCTestCase+MemoryLeakTracking.swift */; };
+		687075802C4EA01C003942B5 /* EssentialFeediOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6870755A2C46B3A9003942B5 /* EssentialFeediOS.framework */; };
+		6870758B2C4EA2CD003942B5 /* EssentialFeed.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 688CCC632BE480EC004A8EEE /* EssentialFeed.framework */; };
+		6870758C2C4EA2CD003942B5 /* EssentialFeed.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 688CCC632BE480EC004A8EEE /* EssentialFeed.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6878F4E92BFDB75D0050A78D /* LoadFeedFromCacheUserCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6878F4E82BFDB75D0050A78D /* LoadFeedFromCacheUserCaseTests.swift */; };
 		6878F4EC2BFDB87F0050A78D /* FeedStoreSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6878F4EB2BFDB87F0050A78D /* FeedStoreSpy.swift */; };
 		6878F4EE2BFEE1A50050A78D /* ValidateFeedCacheUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6878F4ED2BFEE1A50050A78D /* ValidateFeedCacheUseCaseTests.swift */; };
@@ -58,14 +58,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		687075632C46B3A9003942B5 /* PBXContainerItemProxy */ = {
+		687075822C4EA01C003942B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 688CCC5A2BE480EC004A8EEE /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 687075592C46B3A8003942B5;
 			remoteInfo = EssentialFeediOS;
 		};
-		687075762C480E04003942B5 /* PBXContainerItemProxy */ = {
+		687075872C4EA0D4003942B5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 688CCC5A2BE480EC004A8EEE /* Project object */;
 			proxyType = 1;
@@ -96,13 +96,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		687075782C480E04003942B5 /* Embed Frameworks */ = {
+		6870758D2C4EA2CD003942B5 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				687075752C480E04003942B5 /* EssentialFeed.framework in Embed Frameworks */,
+				6870758C2C4EA2CD003942B5 /* EssentialFeed.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,7 +166,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				687075742C480E04003942B5 /* EssentialFeed.framework in Frameworks */,
+				6870758B2C4EA2CD003942B5 /* EssentialFeed.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,7 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				687075622C46B3A9003942B5 /* EssentialFeediOS.framework in Frameworks */,
+				687075802C4EA01C003942B5 /* EssentialFeediOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,12 +448,12 @@
 				687075562C46B3A8003942B5 /* Sources */,
 				687075572C46B3A8003942B5 /* Frameworks */,
 				687075582C46B3A8003942B5 /* Resources */,
-				687075782C480E04003942B5 /* Embed Frameworks */,
+				6870758D2C4EA2CD003942B5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				687075772C480E04003942B5 /* PBXTargetDependency */,
+				687075882C4EA0D4003942B5 /* PBXTargetDependency */,
 			);
 			name = EssentialFeediOS;
 			productName = EssentialFeediOS;
@@ -471,7 +471,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				687075642C46B3A9003942B5 /* PBXTargetDependency */,
+				687075832C4EA01C003942B5 /* PBXTargetDependency */,
 			);
 			name = EssentialFeediOSTests;
 			productName = EssentialFeediOSTests;
@@ -736,15 +736,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		687075642C46B3A9003942B5 /* PBXTargetDependency */ = {
+		687075832C4EA01C003942B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 687075592C46B3A8003942B5 /* EssentialFeediOS */;
-			targetProxy = 687075632C46B3A9003942B5 /* PBXContainerItemProxy */;
+			targetProxy = 687075822C4EA01C003942B5 /* PBXContainerItemProxy */;
 		};
-		687075772C480E04003942B5 /* PBXTargetDependency */ = {
+		687075882C4EA0D4003942B5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 688CCC622BE480EC004A8EEE /* EssentialFeed */;
-			targetProxy = 687075762C480E04003942B5 /* PBXContainerItemProxy */;
+			targetProxy = 687075872C4EA0D4003942B5 /* PBXContainerItemProxy */;
 		};
 		688CCC702BE480EC004A8EEE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -769,7 +769,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 2WFF68Z2V7;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -778,6 +778,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -800,7 +801,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 2WFF68Z2V7;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -809,6 +810,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -914,7 +916,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -974,7 +976,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;

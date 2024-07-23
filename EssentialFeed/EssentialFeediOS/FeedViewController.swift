@@ -25,8 +25,15 @@ final public class FeedViewController: UITableViewController {
         load()
     }
     
-    @objc private func load() {
+    public override func viewIsAppearing(_ animated: Bool) {
+        super.viewIsAppearing(animated)
+        
         refreshControl?.beginRefreshing()
+    }
+
+    
+    @objc private func load() {
+//        refreshControl?.beginRefreshing()
         loader?.load{ [weak self] _ in
             self?.refreshControl?.endRefreshing()
         }

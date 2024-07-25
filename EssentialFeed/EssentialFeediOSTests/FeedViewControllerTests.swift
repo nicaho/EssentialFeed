@@ -52,19 +52,14 @@ final class FeedViewControllerTests: XCTestCase {
         let (sut, loader) = makeSUT()
         
         sut.loadViewIfNeeded()
-        XCTAssertEqual(sut.numberOfRenderedFeedImageViews(), 0)
+        assertThat(sut, isRending: [])
         
         loader.completeFeedLoading(with: [image0], at: 0)
-        XCTAssertEqual(sut.numberOfRenderedFeedImageViews(), 1)
-        assertThat(sut, hasViewConfiguredFor: image0, at: 0)
+        assertThat(sut, isRending: [image0])
         
         sut.simulateUserInitiatedFeedLoad()
         loader.completeFeedLoading(with: [image0, image1, image2, image3], at: 1)
-        XCTAssertEqual(sut.numberOfRenderedFeedImageViews(), 4)
-        assertThat(sut, hasViewConfiguredFor: image0, at: 0)
-        assertThat(sut, hasViewConfiguredFor: image1, at: 1)
-        assertThat(sut, hasViewConfiguredFor: image2, at: 2)
-        assertThat(sut, hasViewConfiguredFor: image3, at: 3)
+        assertThat(sut, isRending: [image0, image1, image2, image3])
     }
     
     // MARK: - Helpers
@@ -74,6 +69,16 @@ final class FeedViewControllerTests: XCTestCase {
         let sut = FeedViewController(loader: loader)
         trackForMemoryLeaks(sut, file: file, line: line)
         return (sut, loader)
+    }
+    
+    private func assertThat(_ sut: FeedViewController, isRending feed: [FeedImage], file: StaticString = #filePath, line: UInt = #line) {
+        guard sut.numberOfRenderedFeedImageViews() == feed.count else {
+            return XCTFail("Expected \(feed.count) images, got \(sut.numberOfRenderedFeedImageViews()) instead.", file: file, line: line)
+        }
+        
+        feed.enumerated().forEach{ index, image in
+            assertThat(sut, hasViewConfiguredFor: image, at: index)
+        }
     }
     
     private func assertThat(_ sut: FeedViewController, hasViewConfiguredFor image: FeedImage, at index: Int, file: StaticString = #filePath, line: UInt = #line) {

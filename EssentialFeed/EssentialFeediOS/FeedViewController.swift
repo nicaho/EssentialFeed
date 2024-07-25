@@ -13,6 +13,8 @@ final public class FeedViewController: UITableViewController {
     
     private var tableModel = [FeedImage]()
     
+    var isViewAppeared = false
+    
     public convenience init(loader: FeedLoader) {
         self.init()
         self.loader = loader
@@ -30,22 +32,21 @@ final public class FeedViewController: UITableViewController {
     public override func viewIsAppearing(_ animated: Bool) {
         super.viewIsAppearing(animated)
         
-        refreshControl?.beginRefreshing()
+        if !isViewAppeared {
+            refreshControl?.beginRefreshing()
+            isViewAppeared = true
+        }
     }
 
     
     @objc private func load() {
-//        refreshControl?.beginRefreshing()
+        refreshControl?.beginRefreshing()
         loader?.load{ [weak self] result in
-            switch result {
-            case let .success(feed):
+            if let feed = try? result.get() {
                 self?.tableModel = feed
                 self?.tableView.reloadData()
-                self?.refreshControl?.endRefreshing()
-            case .failure:
-                break
             }
-            
+            self?.refreshControl?.endRefreshing()
         }
     }
     

@@ -37,11 +37,10 @@ final class FeedViewControllerTests: XCTestCase {
         XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once loading is completed")
 
         sut.simulateUserInitiatedFeedLoad()
-        sut.refreshControl?.beginRefreshing()
         XCTAssertTrue(sut.isShowingLoadingIndicator, "Expected loading indicator once user initiates a reload")
         
-//        loader.completeFeedLoading(at: 1)
-//        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading is completed")
+        loader.completeFeedLoadingWithError(at: 1)
+        XCTAssertFalse(sut.isShowingLoadingIndicator, "Expected no loading indicator once user initiated loading is completed")
     }
     
     func test_loadFeedCompletion_rendersSuccessfullyLoadedFeed() {
@@ -137,10 +136,13 @@ final class FeedViewControllerTests: XCTestCase {
 public extension FeedViewController {
     func replaceRefreshControlWithFakeForiOS17Support() {
         let fake = FakeRefreshControl()
-        
+        refreshControl?.allTargets.forEach{ target in
+            refreshControl?.actions(forTarget: target, forControlEvent:
+                    .valueChanged)?.forEach { action in
+                        fake.addTarget(target, action: Selector(action), for: .valueChanged)
+            }
+        }
         refreshControl = fake
-        
-        simulateUserInitiatedFeedLoad()
     }
     
     func simulateAppearance() {

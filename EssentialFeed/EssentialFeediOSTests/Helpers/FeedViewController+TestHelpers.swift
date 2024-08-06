@@ -5,8 +5,8 @@
 //  Created by nicaho on 2024/8/6.
 //
 
-import EssentialFeediOS
 import UIKit
+import EssentialFeediOS
 
 extension FeedViewController {
     func replaceRefreshControlWithFakeForiOS17Support() {

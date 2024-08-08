@@ -13,8 +13,8 @@ final class FeedImageCellController {
     private let model: FeedImage
     private let imageLoader: FeedImageDataLoader
     
-    init(cellModel: FeedImage, imageLoader: FeedImageDataLoader) {
-        self.model = cellModel
+    init(model: FeedImage, imageLoader: FeedImageDataLoader) {
+        self.model = model
         self.imageLoader = imageLoader
     }
     
@@ -49,7 +49,7 @@ final class FeedImageCellController {
         task = imageLoader.loadImageData(from: model.url, completion: { _ in })
     }
     
-    deinit {
+    func cancelLoad() {
         task?.cancel()
     }
 }

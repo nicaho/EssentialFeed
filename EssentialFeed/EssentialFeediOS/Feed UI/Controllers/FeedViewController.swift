@@ -30,7 +30,6 @@ public final class FeedUIComposor {
 
 public final class FeedViewController: UITableViewController, UITableViewDataSourcePrefetching {
     public var refreshController: FeedRefreshViewController?
-    private var imageLoader: FeedImageDataLoader?
     
     var tableModel = [FeedImageCellController]() {
         didSet {

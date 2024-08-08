@@ -17,7 +17,7 @@ public class FeedRefreshViewController: NSObject {
     
     private let feedLoader: FeedLoader
     
-    init(feedLoader: FeedLoader) {
+    public init(feedLoader: FeedLoader) {
         self.feedLoader = feedLoader
     }
     

@@ -53,9 +53,7 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     }
     
     public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellModel = tableModel[indexPath.row]
-        let cellController = FeedImageCellController(cellModel: cellModel, imageLoader: imageLoader!)
-        cellControllers[indexPath] = cellController
+        let cellController = cellController(forRowAt: indexPath)
         return cellController.view()
     }
     
@@ -65,15 +63,20 @@ public final class FeedViewController: UITableViewController, UITableViewDataSou
     
     public func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { indexPath in
-            let cellModel = tableModel[indexPath.row]
-            let cellController = FeedImageCellController(cellModel: cellModel, imageLoader: imageLoader!)
-            cellControllers[indexPath] = cellController
+            let cellController = cellController(forRowAt: indexPath)
             cellController.preload()
         }
     }
     
     public func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         indexPaths.forEach(removeCellController)
+    }
+    
+    private func cellController(forRowAt indexPath: IndexPath) -> FeedImageCellController {
+        let cellModel = tableModel[indexPath.row]
+        let cellController = FeedImageCellController(cellModel: cellModel, imageLoader: imageLoader!)
+        cellControllers[indexPath] = cellController
+        return cellController
     }
     
     private func removeCellController(forRowAt indexPath: IndexPath) {

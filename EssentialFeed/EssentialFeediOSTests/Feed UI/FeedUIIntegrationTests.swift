@@ -11,7 +11,7 @@ import EssentialFeed
 import EssentialFeediOS
 
 // 改为iOS16测试！！
-final class FeedViewControllerTests: XCTestCase {
+final class FeedUIIntegrationTests: XCTestCase {
 
     func test_feedView_hastTitle() {
         let (sut, _) = makeSUT()

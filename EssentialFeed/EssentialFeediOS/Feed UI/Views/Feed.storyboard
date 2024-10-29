@@ -22,16 +22,33 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
                         <view key="tableFooterView" contentMode="scaleToFill" id="NI1-R4-W7H">
-                            <rect key="frame" x="0.0" y="674" width="393" height="16"/>
+                            <rect key="frame" x="0.0" y="674" width="393" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dJU-JU-Bev" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
-                                    <rect key="frame" x="94" y="0.0" width="240" height="72"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJU-JU-Bev" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="393" height="20"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyy-5w-t0s">
+                                            <rect key="frame" x="175" y="-1" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <connections>
+                                        <outlet property="label" destination="gyy-5w-t0s" id="0wT-O3-JTw"/>
+                                    </connections>
                                 </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="dJU-JU-Bev" secondAttribute="bottom" id="534-Zq-B03"/>
+                                <constraint firstAttribute="trailing" secondItem="dJU-JU-Bev" secondAttribute="trailing" id="JjI-mc-Uhp"/>
+                                <constraint firstItem="dJU-JU-Bev" firstAttribute="top" secondItem="NI1-R4-W7H" secondAttribute="top" id="mdK-WG-hzp"/>
+                                <constraint firstItem="dJU-JU-Bev" firstAttribute="leading" secondItem="NI1-R4-W7H" secondAttribute="leading" id="tWP-PX-Tv6"/>
+                            </constraints>
                         </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="FeedImageCell" rowHeight="580" id="9Ll-Q9-7tA" customClass="FeedImageCell" customModule="EssentialFeediOS" customModuleProvider="target">

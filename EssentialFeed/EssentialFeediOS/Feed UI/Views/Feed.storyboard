@@ -28,6 +28,14 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJU-JU-Bev" customClass="ErrorView" customModule="EssentialFeediOS" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="393" height="20"/>
                                     <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RvY-pk-6r9">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="20"/>
+                                            <state key="normal" title="Button"/>
+                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                            <connections>
+                                                <action selector="hideMessageAnimated" destination="dJU-JU-Bev" eventType="touchUpInside" id="tLH-Ko-ZDy"/>
+                                            </connections>
+                                        </button>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gyy-5w-t0s">
                                             <rect key="frame" x="175" y="-1" width="42" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -37,6 +45,12 @@
                                         </label>
                                     </subviews>
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstItem="RvY-pk-6r9" firstAttribute="leading" secondItem="dJU-JU-Bev" secondAttribute="leading" id="b0g-1P-HT8"/>
+                                        <constraint firstAttribute="trailing" secondItem="RvY-pk-6r9" secondAttribute="trailing" id="jqV-Bk-13y"/>
+                                        <constraint firstAttribute="bottom" secondItem="RvY-pk-6r9" secondAttribute="bottom" id="sFB-5e-fok"/>
+                                        <constraint firstItem="RvY-pk-6r9" firstAttribute="top" secondItem="dJU-JU-Bev" secondAttribute="top" id="uM5-D1-hZq"/>
+                                    </constraints>
                                     <connections>
                                         <outlet property="label" destination="gyy-5w-t0s" id="0wT-O3-JTw"/>
                                     </connections>

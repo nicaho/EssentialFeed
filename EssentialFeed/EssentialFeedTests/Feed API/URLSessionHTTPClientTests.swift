@@ -25,7 +25,6 @@ final class URLSessionHTTPClientTests: XCTestCase {
     func test_getFromURL_performsGETRequestWithURL() {
         let url = anyURL()
         let exp = expectation(description: "Wait for request")
-//        exp.assertForOverFulfill = false // ?? 看起来解决 [API violation - multiple calls]，看后续课程如何修复
         
         URLProtocolStub.observeRequests { request in
             XCTAssertEqual(request.url, url)
@@ -36,6 +35,24 @@ final class URLSessionHTTPClientTests: XCTestCase {
         
         makeSUT().get(from: url) { _ in }
         
+        wait(for: [exp], timeout: 1.0)
+    }
+    
+    func test_cancelGetFromURLTask_cancelsURLRequest() {
+        let url = anyURL()
+        let exp = expectation(description: "Wait for request")
+        
+        let task = makeSUT().get(from: url) { result in
+            switch result {
+            case let .failure(error as NSError) where error.code == URLError.cancelled.rawValue:
+                break
+            default:
+                XCTFail("Expected cancelled result, got \(result) instead")
+            }
+            exp.fulfill()
+        }
+        
+        task.cancel()
         wait(for: [exp], timeout: 1.0)
     }
     
